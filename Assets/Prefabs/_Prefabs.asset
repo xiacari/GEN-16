@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7afed47e566b4275ba6f1dcc91d019f2, type: 3}
+  m_Name: _Prefabs
+  m_EditorClassIdentifier: 
+  terrainTile: {fileID: 287002517138056050, guid: a66b1e652541b7345905de69293b9a05, type: 3}
