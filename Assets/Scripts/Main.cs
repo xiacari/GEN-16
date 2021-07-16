@@ -7,7 +7,7 @@ public class Main : MonoBehaviour
 {
     private void OnEnable()
     {
-        TerrainTile.Prefab = ScriptableObjectInstancesContainer.Instance.Prefabs.TerrainTile;
+        Instantiator.TerrainTilePrefab = ScriptableObjectInstancesContainer.Instance.Prefabs.TerrainTile;
     }
 
     private void Start()

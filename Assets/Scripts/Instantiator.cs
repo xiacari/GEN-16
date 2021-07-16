@@ -4,8 +4,11 @@ using Object = UnityEngine.Object;
 
 public class Instantiator : MonoBehaviour
 {
-    public static TerrainTileMonoBehaviour TerrainTile(TerrainTileMonoBehaviour go)
+    private static TerrainTileMonoBehaviour terrainTilePrefab;
+    
+    public static TerrainTileMonoBehaviour TerrainTilePrefab {set => terrainTilePrefab = value;}
+    public static TerrainTileMonoBehaviour TerrainTile()
     {
-        return Instantiate(go);
+        return Instantiate(terrainTilePrefab);
     }
 }

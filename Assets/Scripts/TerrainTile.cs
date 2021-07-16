@@ -7,6 +7,8 @@ public class TerrainTile
     private (int x, int y) _position;
     private int _type;
     private float _height;
+
+    public float Height => _height;
     
     public static TerrainTileMonoBehaviour Prefab
     {
@@ -18,7 +20,7 @@ public class TerrainTile
         _position = position;
         _type = type;
         _height = height;
-        _mono = Instantiator.TerrainTile(prefab);
+        _mono = Instantiator.TerrainTile();
         _mono.Construct(_position, _type, _height);
     }
 }

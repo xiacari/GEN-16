@@ -39,6 +39,45 @@ public class Graph
         }
     }
 
+    public Graph(TerrainTile[,] tileArray)
+    {
+        _nodes = new Node[tileArray.GetLength(0), tileArray.GetLength(1)];
+        
+        for (var i = 0; i < _nodes.GetLength(1); i++)
+        for (var j = 0; j < _nodes.GetLength(0); j++)
+            _nodes[j, i] = new Node();
+        
+        for (var i = 0; i < _nodes.GetLength(1); i++)
+        for (var j = 0; j < _nodes.GetLength(0); j++)
+        {
+            if (j > 0)
+            {
+                if (tileArray[j, i].Height - tileArray[j - 1, i].Height < .5f)
+                {
+                    var h = tileArray[j, i].Height - tileArray[j - 1, i].Height;
+                    var d = Mathf.Sqrt(1 + h * h);
+                    _nodes[j, i].AddLine(new Line(tileArray[j - 1, i].));
+                }
+
+                _nodes[j, i].AddLine(new Line(distanceArray[j - 1, i], _nodes[j - 1, i]));
+            }
+            if (j < _nodes.GetLength(0) - 1)
+                _nodes[j, i].AddLine(new Line(distanceArray[j+1, i], _nodes[j+1, i]));
+            if (i > 0)
+                _nodes[j, i].AddLine(new Line(distanceArray[j, i-1], _nodes[j, i-1]));
+            if (i < _nodes.GetLength(1) - 1)
+                _nodes[j, i].AddLine(new Line(distanceArray[j, i+1], _nodes[j, i+1]));
+            if (j > 0 && i > 0)
+                _nodes[j, i].AddLine(new Line(distanceArray[j-1, i-1] * 1.41f, _nodes[j-1, i-1]));
+            if (j > 0 && i < _nodes.GetLength(1) - 1)
+                _nodes[j, i].AddLine(new Line(distanceArray[j-1, i+1] * 1.41f, _nodes[j-1, i+1]));
+            if (j < _nodes.GetLength(0) - 1 && i > 0)
+                _nodes[j, i].AddLine(new Line(distanceArray[j+1, i-1] * 1.41f, _nodes[j+1, i-1]));
+            if (j < _nodes.GetLength(0) - 1 && i < _nodes.GetLength(1) - 1)
+                _nodes[j, i].AddLine(new Line(distanceArray[j+1, i+1] * 1.41f, _nodes[j+1, i+1]));
+        }
+    }
+
     private void Dijkstra(int x, int y)
     {
         ResetMarks();
